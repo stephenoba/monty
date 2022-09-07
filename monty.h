@@ -9,7 +9,7 @@
 #define MAX_BUF_SIZE 1024
 #define UNUSED(x) (void)(x)
 
-extern char *buf;
+extern char *line;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
