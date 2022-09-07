@@ -1,6 +1,16 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+#define MAX_BUF_SIZE 1024
+#define UNUSED(x) (void)(x)
+
+extern char *buf;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
