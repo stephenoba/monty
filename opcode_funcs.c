@@ -7,10 +7,16 @@
  */
 void op_push(stack_t **stack, unsigned int line_number)
 {
+	char *item;
 	int n;
 
 	UNUSED(line_number);
-	n = atoi(strtok(NULL, " "));
+	item = strtok(NULL, " ");
+	if (!item)
+	{
+		raise_opcode_error(line_number, "push");
+	}
+	n = atoi(item);
 	push(stack, n);
 }
 
