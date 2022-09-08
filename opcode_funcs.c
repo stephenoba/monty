@@ -17,6 +17,10 @@ void op_push(stack_t **stack, unsigned int line_number)
 		raise_opcode_error(line_number, "push", *stack);
 	}
 	n = atoi(item);
+	if (n == 0)
+	{
+		raise_opcode_error(line_number, "push", *stack);
+	}
 	push(stack, n);
 }
 
