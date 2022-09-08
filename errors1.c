@@ -44,7 +44,7 @@ void raise_pop_error(unsigned int line_number, stack_t *stack)
  */
 void raise_pint_error(unsigned int line_number, stack_t *stack)
 {
-	fprintf(stderr, "L%d: can't pint an empty stack\n", line_number);
+	fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 	free(line);
 	free_stack(stack);
 	exit(EXIT_FAILURE);
