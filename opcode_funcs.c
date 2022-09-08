@@ -2,7 +2,7 @@
 
 /**
  * op_push - push an item to the stack
- * @head: pointer to head
+ * @stack: pointer to head
  * @line_number: line number
  */
 void op_push(stack_t **stack, unsigned int line_number)
@@ -16,8 +16,8 @@ void op_push(stack_t **stack, unsigned int line_number)
 
 /**
  * op_pall - print the content in the stack
- * @head: pointer to head
- * @ine_number: line number
+ * @stack: pointer to head
+ * @line_number: line number
  */
 void op_pall(stack_t **stack, unsigned int line_number)
 {

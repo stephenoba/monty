@@ -2,9 +2,15 @@
 
 char *line = NULL;
 
+/**
+ * is_empty - checks if a line is empty
+ * @wc: word count
+ *
+ * Return: 0 or 1
+ */
 int is_empty(ssize_t wc)
 {
-	size_t i= 0;
+	size_t i = 0;
 
 	if (wc == 0)
 		return (1);
@@ -12,10 +18,10 @@ int is_empty(ssize_t wc)
 	while (line[i] != '\0')
 	{
 		if (line[i] != ' ')
-			return 0;
+			return (0);
 		i++;
 	}
-	return 1;
+	return (1);
 }
 
 /**

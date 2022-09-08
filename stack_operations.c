@@ -17,6 +17,9 @@ void print_stack(stack_t *head)
 /**
  * push - insert item to stack
  * @head: pointer to head
+ * @n: node data
+ *
+ * Return: node
  */
 stack_t *push(stack_t **head, int n)
 {
