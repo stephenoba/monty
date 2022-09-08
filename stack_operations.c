@@ -54,6 +54,29 @@ stack_t *push(stack_t **head, int n)
 }
 
 /**
+ * pop - remove the first item in the stack
+ * @head: pointer to head
+ *
+ * Return: 0 or -1
+ */
+int pop(stack_t **head)
+{
+	stack_t *current;
+
+	if (!(*head))
+		return (-1);
+
+	current = *head;
+	*head = current->next;
+	if (current->next)
+	{
+		current->next->prev = NULL;
+	}
+	free(current);
+	return (0);
+}
+
+/**
  * free_stack - free nodes
  * @head: head of list
  */

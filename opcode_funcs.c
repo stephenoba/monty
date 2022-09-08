@@ -10,7 +10,6 @@ void op_push(stack_t **stack, unsigned int line_number)
 	char *item;
 	int n;
 
-	UNUSED(line_number);
 	item = strtok(NULL, " ");
 	if (!item)
 	{
@@ -35,8 +34,29 @@ void op_pall(stack_t **stack, unsigned int line_number)
 	print_stack(*stack);
 }
 
+/**
+ * op_pint - print the first item in the stack
+ * @stack: pointer to stack
+ * @line_number: line number
+ */
 void op_pint(stack_t **stack, unsigned int line_number)
 {
 	UNUSED(line_number);
 	peek(*stack);
+}
+
+/**
+ * op_pop - remove the first item in the stack
+ * @stack: pointer to stack
+ * @line_number: line number
+ */
+void op_pop(stack_t **stack, unsigned int line_number)
+{
+	int ret;
+
+	ret = pop(stack);
+	if (ret != 0)
+	{
+		raise_pop_error(line_number, *stack);
+	}
 }

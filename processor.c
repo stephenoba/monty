@@ -14,6 +14,7 @@ void process_line(stack_t **stack, unsigned int line_number)
 		{ "push", op_push },
 		{ "pall", op_pall },
 		{ "pint", op_pint },
+		{ "pop", op_pop },
 		{ NULL, NULL }
 	};
 	int i;
