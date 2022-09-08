@@ -28,7 +28,7 @@ void process_line(stack_t **stack, unsigned int line_number)
 	}
 	if (instructions[i].opcode == NULL)
 	{
-		raise_opcode_error(line_number, opcode);
+		raise_opcode_error(line_number, opcode, *stack);
 	}
 	instructions[i].f(stack, line_number);
 }

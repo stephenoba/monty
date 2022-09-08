@@ -45,9 +45,9 @@ typedef struct instruction_s
 void process_line(stack_t **stack, unsigned int line_number);
 
 /* ERROR HANDLING */
-int handle_error(int error_code);
+int handle_error(int error_code, stack_t *stack);
 void malloc_failed(void);
-void raise_opcode_error(unsigned int line_number, char *opcode);
+void raise_opcode_error(unsigned int line_number, char *opcode, stack_t *stack);
 
 /* STACK OPERATIONS */
 void print_stack(stack_t *head);

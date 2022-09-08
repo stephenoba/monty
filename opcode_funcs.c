@@ -14,7 +14,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 	item = strtok(NULL, " ");
 	if (!item)
 	{
-		raise_opcode_error(line_number, "push");
+		raise_opcode_error(line_number, "push", *stack);
 	}
 	n = atoi(item);
 	push(stack, n);

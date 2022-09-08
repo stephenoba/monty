@@ -28,7 +28,7 @@ stack_t *push(stack_t **head, int n)
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 	{
-		handle_error(1);
+		handle_error(1, *head);
 	}
 	new_node->n = n;
 	new_node->prev = NULL;

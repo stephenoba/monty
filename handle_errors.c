@@ -3,10 +3,11 @@
 /**
  * handle_error - handle errors
  * @error_code: error to handle
+ * @stack: stack
  *
  * Return: EXIT_FAILURE
  */
-int handle_error(int error_code)
+int handle_error(int error_code, stack_t *stack)
 {
 	switch (error_code)
 	{
@@ -17,6 +18,7 @@ int handle_error(int error_code)
 
 	if (line)
 		free(line);
+	free_stack(stack);
 	exit(EXIT_FAILURE);
 }
 
