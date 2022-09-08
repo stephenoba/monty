@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <string.h>
 
 #define MAX_BUF_SIZE 1024
 #define UNUSED(x) (void)(x)
@@ -41,23 +42,20 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/**
- * struct error_s - error and its function
- * @code: error code
- * @f: function to jandle error
- */
-typedef struct error_s
-{
-	int code;
-	void (*f)(void);
-} error_t;
+void process_line(stack_t **head, unsigned int line_number);
 
 /* ERROR HANDLING */
 int handle_error(int error_code);
 void malloc_failed(void);
+void raise_opcode_error(unsigned int line_number, char *opcode);
 
 /* STACK OPERATIONS */
 void print_stack(stack_t *head);
 stack_t *push(stack_t **head, int n);
+void free_stack(stack_t *head);
+
+/* OPCODE FUNCTIONS */
+void op_push(stack_t **stack, unsigned int line_number);
+void op_pall(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */

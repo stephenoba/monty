@@ -21,20 +21,36 @@ void print_stack(stack_t *head)
 stack_t *push(stack_t **head, int n)
 {
 	stack_t *new_node;
-	int n;
 
-	new_node = malloc(sizeof(stact_t));
+	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 	{
 		handle_error(1);
 	}
-	/*
-	n = atoi(strtok(NULL, " "));
-	*/
 	new_node->n = n;
 	new_node->prev = NULL;
-	new_node->next = *stack;
-	if (*stack)
-		*stack->prev = new_node;
+	new_node->next = *head;
+	if (*head)
+	{
+		(*head)->prev = new_node;
+	}
+	*head = new_node;
 	return (new_node);
+}
+
+/**
+ * free_stack - free nodes
+ * @head: head of list
+ */
+void free_stack(stack_t *head)
+{
+	stack_t *temp;
+
+	temp = head;
+	while (temp)
+	{
+		temp = head->next;
+		free(head);
+		head = temp;
+	}
 }

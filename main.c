@@ -1,11 +1,21 @@
 #include "monty.h"
-#include <string.h>
 
 char *line = NULL;
 
-char *func(void)
+int is_empty(ssize_t wc)
 {
-	return strtok(NULL, " ");
+	size_t i= 0;
+
+	if (wc == 0)
+		return (1);
+
+	while (line[i] != '\0')
+	{
+		if (line[i] != ' ')
+			return 0;
+		i++;
+	}
+	return 1;
 }
 
 /**
@@ -21,9 +31,8 @@ int main(int ac, char *av[])
 	size_t len = 0;
 	ssize_t wc;
 	unsigned int lc;
-	char *opcode;
+	stack_t *stack = NULL;
 
-	UNUSED(lc);
 	if (ac != 2)
 	{
 		/* we can use fprintf here */
@@ -38,11 +47,14 @@ int main(int ac, char *av[])
 		exit(EXIT_FAILURE);
 	}
 
+	lc = 1;
 	while ((wc = getline(&line, &len, stream)) != -1)
 	{
-		opcode = strtok(line, " ");
-		printf("Retrieved line of length %ld with opcode %s\n", wc, opcode);
-		printf("and item %s\n", func());
+		line[strcspn(line, "\n")] = '\0';
+		if (is_empty(wc))
+			continue;
+		process_line(&stack, lc);
+		lc++;
 	}
 	free(line);
 	fclose(stream);
