@@ -41,4 +41,23 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct error_s - error and its function
+ * @code: error code
+ * @f: function to jandle error
+ */
+typedef struct error_s
+{
+	int code;
+	void (*f)(void);
+} error_t;
+
+/* ERROR HANDLING */
+int handle_error(int error_code);
+void malloc_failed(void);
+
+/* STACK OPERATIONS */
+void print_stack(stack_t *head);
+stack_t *push(stack_t **head, int n);
+
 #endif /* MONTY_H */

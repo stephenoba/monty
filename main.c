@@ -3,28 +3,9 @@
 
 char *line = NULL;
 
-void push(stack_t **stack, unsigned int line_number)
+char *func(void)
 {
-	UNUSED(stack);
-	UNUSED(line_number);
-	write(1, "push", 4);
-}
-
-void pall(stack_t **stack, unsigned int line_number)
-{
-	UNUSED(stack);
-	UNUSED(line_number);
-	write(1, "pallyyyyyy\n", 11);
-}
-
-
-/**
- * get_opcode - get opcode from line
- *  *
- */
-char *get_opcode(void)
-{
-	return ("pall");
+	return strtok(NULL, " ");
 }
 
 /**
@@ -40,6 +21,7 @@ int main(int ac, char *av[])
 	size_t len = 0;
 	ssize_t wc;
 	unsigned int lc;
+	char *opcode;
 
 	UNUSED(lc);
 	if (ac != 2)
@@ -58,8 +40,9 @@ int main(int ac, char *av[])
 
 	while ((wc = getline(&line, &len, stream)) != -1)
 	{
-		printf("Retrieved line of length %ld\n", wc);
-		fwrite(line, wc, 1, stdout);
+		opcode = strtok(line, " ");
+		printf("Retrieved line of length %ld with opcode %s\n", wc, opcode);
+		printf("and item %s\n", func());
 	}
 	free(line);
 	fclose(stream);
