@@ -34,3 +34,9 @@ void op_pall(stack_t **stack, unsigned int line_number)
 	UNUSED(line_number);
 	print_stack(*stack);
 }
+
+void op_pint(stack_t **stack, unsigned int line_number)
+{
+	UNUSED(line_number);
+	peek(*stack);
+}

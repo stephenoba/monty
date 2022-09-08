@@ -1,5 +1,5 @@
 push    3
-  push
+  pint
                    
  
 push 8

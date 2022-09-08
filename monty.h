@@ -53,9 +53,11 @@ void raise_opcode_error(unsigned int line_number, char *opcode, stack_t *stack);
 void print_stack(stack_t *head);
 stack_t *push(stack_t **head, int n);
 void free_stack(stack_t *head);
+void peek(stack_t *head);
 
 /* OPCODE FUNCTIONS */
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
+void op_pint(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
