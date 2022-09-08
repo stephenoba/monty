@@ -41,8 +41,13 @@ void op_pall(stack_t **stack, unsigned int line_number)
  */
 void op_pint(stack_t **stack, unsigned int line_number)
 {
-	UNUSED(line_number);
-	peek(*stack);
+	int ret;
+
+	ret = peek(*stack);
+	if (ret != 0)
+	{
+		raise_pint_error(line_number, *stack);
+	}
 }
 
 /**

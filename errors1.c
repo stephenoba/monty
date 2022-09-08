@@ -35,3 +35,18 @@ void raise_pop_error(unsigned int line_number, stack_t *stack)
 	free_stack(stack);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * raise_pint_error - error with removing node
+ * @line_number: line number
+ * @opcode: opcode
+ * @stack: stack
+ */
+void raise_pint_error(unsigned int line_number, stack_t *stack)
+{
+	fprintf(stderr, "L%d: can't pint an empty stack\n", line_number);
+	free(line);
+	free_stack(stack);
+	exit(EXIT_FAILURE);
+}
+

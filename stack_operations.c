@@ -17,13 +17,17 @@ void print_stack(stack_t *head)
 /**
  * peek - print first item in the stack
  * @stack: pointer to first item
+ *
+ * Return: 0 or -1
  */
-void peek(stack_t *head)
+int peek(stack_t *head)
 {
-	if (head)
+	if (!head)
 	{
-		printf("%d\n", head->n);
+		return (-1);
 	}
+	printf("%d\n", head->n);
+	return (0);
 }
 
 /**
