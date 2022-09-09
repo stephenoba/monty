@@ -8,7 +8,7 @@
  */
 void raise_opcode_error(unsigned int line_number, char *opcode, stack_t *stack)
 {
-	fprintf(stderr, "L%d:unknown instruction %s\n", line_number, opcode);
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 	free(line);
 	free_stack(stack);
 	exit(EXIT_FAILURE);
