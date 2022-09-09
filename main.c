@@ -63,6 +63,7 @@ int main(int ac, char *av[])
 		lc++;
 	}
 	free(line);
+	free_stack(stack);
 	fclose(stream);
 	exit(EXIT_SUCCESS);
 }
