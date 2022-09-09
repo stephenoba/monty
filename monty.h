@@ -51,6 +51,7 @@ void raise_opcode_error(unsigned int line_number, char *opcode, stack_t *stack);
 void raise_pop_error(unsigned int line_number, stack_t *stack);
 void raise_pint_error(unsigned int line_number, stack_t *stack);
 void raise_swap_error(unsigned int line_number, stack_t *stack);
+void raise_add_error(unsigned int line_number, stack_t *stack);
 
 /* STACK OPERATIONS */
 void print_stack(stack_t *head);
@@ -65,5 +66,6 @@ void op_pall(stack_t **stack, unsigned int line_number);
 void op_pint(stack_t **stack, unsigned int line_number);
 void op_pop(stack_t **stack, unsigned int line_number);
 void op_swap(stack_t **stack, unsigned int line_number);
+void op_add(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
