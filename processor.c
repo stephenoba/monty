@@ -21,6 +21,7 @@ void process_line(stack_t **stack, unsigned int line_number)
 		{ "nop", op_nop },
 		{ "div", op_div },
 		{ "mul", op_mul },
+		{ "mod", op_mod },
 		{ NULL, NULL }
 	};
 	int i;

@@ -1,5 +1,5 @@
 push 9
-push 90
-push 0
-mul div
+push 235
+push 10
+mod div
 pall
