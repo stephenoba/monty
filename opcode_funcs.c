@@ -8,12 +8,13 @@
 void op_push(stack_t **stack, unsigned int line_number)
 {
 	char *item;
+	char *err_msg = "L%d: usage: push integer\n";
 	int n;
 
 	item = strtok(NULL, " ");
 	if (!item || is_number(item) == 0)
 	{
-		raise_push_error(line_number, *stack);
+		raise_operation_error(err_msg, line_number, *stack);
 	}
 	n = atoi(item);
 	push(stack, n);
@@ -38,11 +39,12 @@ void op_pall(stack_t **stack, unsigned int line_number)
 void op_pint(stack_t **stack, unsigned int line_number)
 {
 	int ret;
+	char *err_msg = "L%d: can't pint, stack empty\n";
 
 	ret = peek(*stack);
 	if (ret != 0)
 	{
-		raise_pint_error(line_number, *stack);
+		raise_operation_error(err_msg, line_number, *stack);
 	}
 }
 
@@ -54,11 +56,12 @@ void op_pint(stack_t **stack, unsigned int line_number)
 void op_pop(stack_t **stack, unsigned int line_number)
 {
 	int ret;
+	char *err_msg = "L%d: can't pop an empty stack\n";
 
 	ret = pop(stack);
 	if (ret != 0)
 	{
-		raise_pop_error(line_number, *stack);
+		raise_operation_error(err_msg, line_number, *stack);
 	}
 }
 
@@ -70,11 +73,12 @@ void op_pop(stack_t **stack, unsigned int line_number)
 void op_swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
+	char *err_msg = "L%d: can't swap, stack too short\n";
 
 	temp = *stack;
 	if (temp == NULL || temp->next == NULL)
 	{
-		raise_swap_error(line_number, *stack);
+		raise_operation_error(err_msg, line_number, *stack);
 	}
 	*stack = temp->next;
 	temp->prev = temp->next;
