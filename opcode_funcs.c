@@ -11,15 +11,11 @@ void op_push(stack_t **stack, unsigned int line_number)
 	int n;
 
 	item = strtok(NULL, " ");
-	if (!item)
+	if (!item || is_number(item) == 0)
 	{
 		raise_push_error(line_number, *stack);
 	}
 	n = atoi(item);
-	if (n == 0)
-	{
-		raise_push_error(line_number, *stack);
-	}
 	push(stack, n);
 }
 
