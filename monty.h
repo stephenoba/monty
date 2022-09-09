@@ -48,6 +48,7 @@ void process_line(stack_t **stack, unsigned int line_number);
 int handle_error(int error_code, stack_t *stack);
 void malloc_failed(void);
 void raise_opcode_error(unsigned int line_number, char *opcode, stack_t *stack);
+void raise_push_error(unsigned int line_number, stack_t *stack);
 void raise_pop_error(unsigned int line_number, stack_t *stack);
 void raise_pint_error(unsigned int line_number, stack_t *stack);
 void raise_swap_error(unsigned int line_number, stack_t *stack);

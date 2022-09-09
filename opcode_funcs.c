@@ -13,12 +13,12 @@ void op_push(stack_t **stack, unsigned int line_number)
 	item = strtok(NULL, " ");
 	if (!item)
 	{
-		raise_opcode_error(line_number, "push", *stack);
+		raise_push_error(line_number, *stack);
 	}
 	n = atoi(item);
 	if (n == 0)
 	{
-		raise_opcode_error(line_number, "push", *stack);
+		raise_push_error(line_number, *stack);
 	}
 	push(stack, n);
 }

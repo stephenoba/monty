@@ -9,12 +9,11 @@ void malloc_failed(void)
 }
 
 /**
- * raise_opcode_error - error with opecode
+ * raise_push_error - error with opecode
  * @line_number: line number
- * @opcode: opcode
  * @stack: stack
  */
-void raise_opcode_error(unsigned int line_number, char *opcode, stack_t *stack)
+void raise_push_error(unsigned int line_number, stack_t *stack)
 {
 	fprintf(stderr, "L%d: usage: push integer\n", line_number);
 	free(line);
@@ -25,7 +24,6 @@ void raise_opcode_error(unsigned int line_number, char *opcode, stack_t *stack)
 /**
  * raise_pop_error - error with removing node
  * @line_number: line number
- * @opcode: opcode
  * @stack: stack
  */
 void raise_pop_error(unsigned int line_number, stack_t *stack)
@@ -39,7 +37,6 @@ void raise_pop_error(unsigned int line_number, stack_t *stack)
 /**
  * raise_pint_error - error with removing node
  * @line_number: line number
- * @opcode: opcode
  * @stack: stack
  */
 void raise_pint_error(unsigned int line_number, stack_t *stack)
@@ -53,7 +50,6 @@ void raise_pint_error(unsigned int line_number, stack_t *stack)
 /**
  * raise_swap_error - error with removing node
  * @line_number: line number
- * @opcode: opcode
  * @stack: stack
  */
 void raise_swap_error(unsigned int line_number, stack_t *stack)

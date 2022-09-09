@@ -16,7 +16,7 @@ void print_stack(stack_t *head)
 
 /**
  * peek - print first item in the stack
- * @stack: pointer to first item
+ * @head: pointer to first item
  *
  * Return: 0 or -1
  */
