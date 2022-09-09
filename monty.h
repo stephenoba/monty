@@ -54,6 +54,7 @@ void raise_pop_error(unsigned int line_number, stack_t *stack);
 void raise_pint_error(unsigned int line_number, stack_t *stack);
 void raise_swap_error(unsigned int line_number, stack_t *stack);
 void raise_add_error(unsigned int line_number, stack_t *stack);
+void raise_sub_error(unsigned int line_number, stack_t *stack);
 
 /* STACK OPERATIONS */
 void print_stack(stack_t *head);
@@ -70,6 +71,7 @@ void op_pop(stack_t **stack, unsigned int line_number);
 void op_swap(stack_t **stack, unsigned int line_number);
 void op_add(stack_t **stack, unsigned int line_number);
 void op_nop(stack_t **stack, unsigned int line_number);
+void op_sub(stack_t **stack, unsigned int line_number);
 
 /* HELPERS */
 int is_number(char *str);
