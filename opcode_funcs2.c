@@ -30,11 +30,11 @@ void op_nop(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * op_add - add the first two items in stack
+ * op_sub - compute difference of the first two items in stack
  * @stack: pointer to stack
  * @line_number: line number
  */
-void op_add(stack_t **stack, unsigned int line_number)
+void op_sub(stack_t **stack, unsigned int line_number)
 {
 	int diff;
 
