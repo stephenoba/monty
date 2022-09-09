@@ -42,7 +42,7 @@ void op_sub(stack_t **stack, unsigned int line_number)
 	{
 		raise_sub_error(line_number, *stack);
 	}
-	diff = (*stack)->n - (*stack)->next->n;
+	diff = (*stack)->next->n - (*stack)->n;
 	pop(stack);
 	(*stack)->n = diff;
 }
