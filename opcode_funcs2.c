@@ -72,3 +72,22 @@ void op_div(stack_t **stack, unsigned int line_number)
 	pop(stack);
 	(*stack)->n = quotient;
 }
+
+/**
+ * op_mul - compute product of the first two items in stack
+ * @stack: pointer to stack
+ * @line_number: line number
+ */  
+void op_mul(stack_t **stack, unsigned int line_number)
+{
+	int prod;
+	char *err_msg = "L%d: can't mul, stack too short\n";
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		raise_operation_error(err_msg, line_number, *stack);
+	}
+	prod = (*stack)->next->n * (*stack)->n;
+	pop(stack);
+	(*stack)->n = prod;
+}
