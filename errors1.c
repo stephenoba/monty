@@ -9,52 +9,28 @@ void malloc_failed(void)
 }
 
 /**
- * raise_push_error - error with opecode
+ * raise_opcode_error - error with opecode
  * @line_number: line number
+ * @opcode: opcode
  * @stack: stack
  */
-void raise_push_error(unsigned int line_number, stack_t *stack)
+void raise_opcode_error(unsigned int line_number, char *opcode, stack_t *stack)
 {
-	fprintf(stderr, "L%d: usage: push integer\n", line_number);
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 	free(line);
 	free_stack(stack);
 	exit(EXIT_FAILURE);
 }
 
 /**
- * raise_pop_error - error with removing node
- * @line_number: line number
- * @stack: stack
+ * raise_operation_error- raises error where execution of opcode fails
+ * @msg: an error message, must end with a new line
+ * @line_number: line where error occured
+ * @stack: pointer to head of stack
  */
-void raise_pop_error(unsigned int line_number, stack_t *stack)
+void raise_operation_error(char *msg, unsigned int line_number, stack_t *stack)
 {
-	fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-	free(line);
-	free_stack(stack);
-	exit(EXIT_FAILURE);
-}
-
-/**
- * raise_pint_error - error with removing node
- * @line_number: line number
- * @stack: stack
- */
-void raise_pint_error(unsigned int line_number, stack_t *stack)
-{
-	fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-	free(line);
-	free_stack(stack);
-	exit(EXIT_FAILURE);
-}
-
-/**
- * raise_swap_error - error with removing node
- * @line_number: line number
- * @stack: stack
- */
-void raise_swap_error(unsigned int line_number, stack_t *stack)
-{
-	fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+	fprintf(stderr, msg, line_number);
 	free(line);
 	free_stack(stack);
 	exit(EXIT_FAILURE);
