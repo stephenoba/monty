@@ -7,14 +7,13 @@
  */
 void op_add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
 	int total;
 
-	temp = *stack;
-	if (temp == NULL || temp->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		raise_add_error(line_number, *stack);
 	}
-	total = temp->n + temp->next->n;
-	printf("%d\n", total);
+	total = (*stack)->n + (*stack)->next->n;
+	pop(stack);
+	(*stack)->n = total;
 }
