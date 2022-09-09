@@ -1,2 +1,4 @@
-push 1 
-pushe 2
+push 98
+push 402
+add Holberton
+pall

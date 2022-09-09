@@ -17,3 +17,14 @@ void op_add(stack_t **stack, unsigned int line_number)
 	pop(stack);
 	(*stack)->n = total;
 }
+
+/**
+ * op_nop - does nothing
+ * @stack: pointer to stack
+ * @line_number: line number
+ */
+void op_nop(stack_t **stack, unsigned int line_number)
+{
+	UNUSED(stack);
+	UNUSED(line_number);
+}
