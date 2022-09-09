@@ -22,7 +22,6 @@ void process_line(stack_t **stack, unsigned int line_number)
 		{ "div", op_div },
 		{ "mul", op_mul },
 		{ "mod", op_mod },
-		{ "#", op_nop },
 		{ NULL, NULL }
 	};
 	int i;
@@ -38,7 +37,10 @@ void process_line(stack_t **stack, unsigned int line_number)
 	}
 	if (instructions[i].opcode == NULL)
 	{
-		raise_opcode_error(line_number, opcode, *stack);
+		if (opcode[0] != '#')
+			raise_opcode_error(line_number, opcode, *stack);
+		op_nop(stack, line_number);
 	}
-	instructions[i].f(stack, line_number);
+	else
+		instructions[i].f(stack, line_number);
 }
