@@ -9,13 +9,15 @@ void op_add(stack_t **stack, unsigned int line_number)
 {
 	int total;
 	char *err_msg = "L%d: can't add, stack too short\n";
+	stack_t *first;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		raise_operation_error(err_msg, line_number, *stack);
 	}
 	total = (*stack)->n + (*stack)->next->n;
-	pop(stack);
+	first = pop(stack);
+	free(first);
 	(*stack)->n = total;
 }
 
@@ -39,13 +41,15 @@ void op_sub(stack_t **stack, unsigned int line_number)
 {
 	int diff;
 	char *err_msg = "L%d: can't sub, stack too short\n";
+	stack_t *first;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		raise_operation_error(err_msg, line_number, *stack);
 	}
 	diff = (*stack)->next->n - (*stack)->n;
-	pop(stack);
+	first = pop(stack);
+	free(first);
 	(*stack)->n = diff;
 }
 
@@ -59,6 +63,7 @@ void op_div(stack_t **stack, unsigned int line_number)
 	int quotient;
 	char *err_msg1 = "L%d: can't div, stack too short\n";
 	char *err_msg2 = "L%d: division by zero\n";
+	stack_t *first;
 	
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -69,7 +74,8 @@ void op_div(stack_t **stack, unsigned int line_number)
 		raise_operation_error(err_msg2, line_number, *stack);
 	}
 	quotient = (*stack)->next->n / (*stack)->n;
-	pop(stack);
+	first = pop(stack);
+	free(first);
 	(*stack)->n = quotient;
 }
 
@@ -82,12 +88,14 @@ void op_mul(stack_t **stack, unsigned int line_number)
 {
 	int prod;
 	char *err_msg = "L%d: can't mul, stack too short\n";
+	stack_t *first;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		raise_operation_error(err_msg, line_number, *stack);
 	}
 	prod = (*stack)->next->n * (*stack)->n;
-	pop(stack);
+	first = pop(stack);
+	free(first);
 	(*stack)->n = prod;
 }

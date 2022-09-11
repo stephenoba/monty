@@ -10,6 +10,7 @@ void op_mod(stack_t **stack, unsigned int line_number)
 	int remainder;
 	char *err_msg1 = "L%d: can't mod, stack too short\n";
 	char *err_msg2 = "L%d: division by zero\n";
+	stack_t *first;
 	
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -20,7 +21,8 @@ void op_mod(stack_t **stack, unsigned int line_number)
 		raise_operation_error(err_msg2, line_number, *stack);
 	}
 	remainder = (*stack)->next->n % (*stack)->n;
-	pop(stack);
+	first = pop(stack);
+	free(first);
 	(*stack)->n = remainder;
 }
 
