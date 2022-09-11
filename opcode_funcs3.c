@@ -69,3 +69,23 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 	}
 	printf("\n");
 }
+
+/**
+ * op_rotl - moves the first item to the end
+ * @stack: pointer to stack
+ * @line_number: line number
+ */
+void op_rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *first;
+	int n;
+	UNUSED(line_number);
+
+	if (*stack)
+	{
+		first = pop(stack);
+		n = first->n;
+		free(first);
+		push_end(stack, n);
+	}
+}

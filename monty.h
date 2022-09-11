@@ -57,6 +57,7 @@ stack_t *push(stack_t **head, int n);
 void free_stack(stack_t *head);
 int peek(stack_t *head);
 stack_t *pop(stack_t **head);
+stack_t *push_end(stack_t **head, const int n);
 
 /* OPCODE FUNCTIONS */
 void op_push(stack_t **stack, unsigned int line_number);
@@ -72,6 +73,7 @@ void op_mul(stack_t **stack, unsigned int line_number);
 void op_mod(stack_t **stack, unsigned int line_number);
 void op_pchar(stack_t **stack, unsigned int line_number);
 void op_pstr(stack_t **stack, unsigned int line_number);
+void op_rotl(stack_t **stack, unsigned int line_number);
 
 /* HELPERS */
 int is_number(char *str);
