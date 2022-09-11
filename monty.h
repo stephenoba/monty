@@ -56,7 +56,7 @@ void print_stack(stack_t *head);
 stack_t *push(stack_t **head, int n);
 void free_stack(stack_t *head);
 int peek(stack_t *head);
-int pop(stack_t **head);
+stack_t *pop(stack_t **head);
 
 /* OPCODE FUNCTIONS */
 void op_push(stack_t **stack, unsigned int line_number);

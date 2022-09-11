@@ -65,7 +65,7 @@ stack_t *push(stack_t **head, int n)
  *
  * Return: 0 or -1
  */
-int pop(stack_t **head)
+stack_t *pop(stack_t **head)
 {
 	stack_t *current;
 

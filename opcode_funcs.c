@@ -55,7 +55,7 @@ void op_pint(stack_t **stack, unsigned int line_number)
  */
 void op_pop(stack_t **stack, unsigned int line_number)
 {
-	int ret;
+	stack_t *ret;
 	char *err_msg = "L%d: can't pop an empty stack\n";
 
 	ret = pop(stack);
