@@ -23,3 +23,27 @@ void op_mod(stack_t **stack, unsigned int line_number)
 	pop(stack);
 	(*stack)->n = remainder;
 }
+
+/**
+ * op_pchar - prints the character at the top of the stack
+ * @stack: pointer to stack
+ * @line_number: line number
+ *
+ * Description: Prints the ASCII character that corresponds
+ * to the integer held by the first node
+ */
+void op_pchar(stack_t **stack, unsigned int line_number)
+{
+	char *err_msg1 = "L%d: can't pchar, value out of range\n";
+	char *err_msg2 = "L%d: can't pchar, stack empty\n";
+
+	if (!(*stack))
+	{
+		raise_operation_error(err_msg2, line_number, *stack);
+	}
+	if ((*stack)->n < 0 || (*stack)->n > 127)
+	{
+		raise_operation_error(err_msg1, line_number, *stack);
+	}
+	printf("%c\n", (*stack)->n);
+}	
