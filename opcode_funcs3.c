@@ -46,4 +46,25 @@ void op_pchar(stack_t **stack, unsigned int line_number)
 		raise_operation_error(err_msg1, line_number, *stack);
 	}
 	printf("%c\n", (*stack)->n);
-}	
+}
+
+/**
+ * op_pstr - prints the string starting  at the top of the stack
+ * @stack: pointer to stack
+ * @line_number: line number
+ */
+void op_pstr(stack_t **stack, unsigned int line_number)
+{
+	UNUSED(line_number);
+
+	while (*stack)
+	{
+		if ((*stack)->n <= 0 || (*stack)->n > 127)
+		{
+			break;
+		}
+		printf("%c", (*stack)->n);
+		*stack = (*stack)->next;
+	}
+	printf("\n");
+}
