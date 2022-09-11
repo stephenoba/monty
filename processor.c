@@ -44,5 +44,8 @@ void process_line(stack_t **stack, unsigned int line_number)
 		op_nop(stack, line_number);
 	}
 	else
+	{
 		instructions[i].f(stack, line_number);
+		/* printf("%d\n", (*stack)->n); */
+	}
 }

@@ -7,10 +7,12 @@
  */
 void print_stack(stack_t *head)
 {
-	while (head)
+	stack_t *temp = head;
+
+	while (temp)
 	{
-		printf("%d\n", head->n);
-		head = head->next;
+		printf("%d\n", temp->n);
+		temp = temp->next;
 	}
 }
 
@@ -35,7 +37,7 @@ int peek(stack_t *head)
  * @head: pointer to head
  * @n: node data
  *
- * Return: node
+ * Return: 0
  */
 stack_t *push(stack_t **head, int n)
 {
@@ -54,7 +56,7 @@ stack_t *push(stack_t **head, int n)
 		(*head)->prev = new_node;
 	}
 	*head = new_node;
-	return (new_node);
+	return (0);
 }
 
 /**

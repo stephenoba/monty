@@ -41,7 +41,6 @@ int main(int ac, char *av[])
 
 	if (ac != 2)
 	{
-		/* we can use fprintf here */
 		write(2, "USAGE: monty file\n", 18);
 		exit(EXIT_FAILURE);
 	}

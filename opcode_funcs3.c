@@ -55,16 +55,17 @@ void op_pchar(stack_t **stack, unsigned int line_number)
  */
 void op_pstr(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp = *stack;
 	UNUSED(line_number);
 
-	while (*stack)
+	while (temp)
 	{
-		if ((*stack)->n <= 0 || (*stack)->n > 127)
+		if (temp->n <= 0 || temp->n > 127)
 		{
 			break;
 		}
-		printf("%c", (*stack)->n);
-		*stack = (*stack)->next;
+		printf("%c", temp->n);
+		temp = temp->next;
 	}
 	printf("\n");
 }
