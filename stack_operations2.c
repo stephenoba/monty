@@ -34,3 +34,26 @@ stack_t *push_end(stack_t **head, const int n)
 	new->prev = current;
 	return (new);
 }
+
+/**
+ * pop_end - remove the last item in the stack
+ * @head: pointer to head
+ *
+ * Return: last node or null
+ */
+stack_t *pop_end(stack_t **head)
+{
+	stack_t *current;
+
+	if (!(*head))
+		return (NULL);
+
+	current = *head;
+	while (current->next)
+	{
+		current = current->next;
+	}
+	current->prev->next = NULL;
+	return (current);
+}
+

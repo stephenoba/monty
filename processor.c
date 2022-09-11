@@ -1,15 +1,13 @@
 #include "monty.h"
 
 /**
- * process_line - processes a line in monty byte code file
- * @stack: pointer to head of stack
- * @line_number: line number
+ * get_instruction - gets instruction
+ * @opcode: opcode to search for
  *
- * Return: EXIT_SUCCESS or EXIT_FAILURE
+ * Return: instruction
  */
-void process_line(stack_t **stack, unsigned int line_number)
+instruction_t get_instruction(char *opcode)
 {
-	char *opcode;
 	instruction_t instructions[] = {
 		{ "push", op_push },
 		{ "pall", op_pall },
@@ -29,8 +27,6 @@ void process_line(stack_t **stack, unsigned int line_number)
 	};
 	int i;
 
-	opcode = strtok(line, " ");
-
 	for (i = 0; instructions[i].opcode != NULL; i++)
 	{
 		if (strcmp(instructions[i].opcode, opcode) == 0)
@@ -38,7 +34,25 @@ void process_line(stack_t **stack, unsigned int line_number)
 			break;
 		}
 	}
-	if (instructions[i].opcode == NULL)
+	return (instructions[i]);
+}
+
+/**
+ * process_line - processes a line in monty byte code file
+ * @stack: pointer to head of stack
+ * @line_number: line number
+ *
+ * Return: EXIT_SUCCESS or EXIT_FAILURE
+ */
+void process_line(stack_t **stack, unsigned int line_number)
+{
+	char *opcode;
+	instruction_t instruction;
+
+	opcode = strtok(line, " ");
+	instruction = get_instruction(opcode);
+
+	if (instruction.opcode == NULL)
 	{
 		if (opcode[0] != '#')
 			raise_opcode_error(line_number, opcode, *stack);
@@ -46,7 +60,6 @@ void process_line(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		instructions[i].f(stack, line_number);
-		/* printf("%d\n", (*stack)->n); */
+		instruction.f(stack, line_number);
 	}
 }

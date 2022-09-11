@@ -64,7 +64,7 @@ void op_div(stack_t **stack, unsigned int line_number)
 	char *err_msg1 = "L%d: can't div, stack too short\n";
 	char *err_msg2 = "L%d: division by zero\n";
 	stack_t *first;
-	
+
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		raise_operation_error(err_msg1, line_number, *stack);
@@ -83,7 +83,7 @@ void op_div(stack_t **stack, unsigned int line_number)
  * op_mul - compute product of the first two items in stack
  * @stack: pointer to stack
  * @line_number: line number
- */  
+ */
 void op_mul(stack_t **stack, unsigned int line_number)
 {
 	int prod;

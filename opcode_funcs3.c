@@ -11,7 +11,7 @@ void op_mod(stack_t **stack, unsigned int line_number)
 	char *err_msg1 = "L%d: can't mod, stack too short\n";
 	char *err_msg2 = "L%d: division by zero\n";
 	stack_t *first;
-	
+
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		raise_operation_error(err_msg1, line_number, *stack);
@@ -58,8 +58,8 @@ void op_pchar(stack_t **stack, unsigned int line_number)
 void op_pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
-	UNUSED(line_number);
 
+	UNUSED(line_number);
 	while (temp)
 	{
 		if (temp->n <= 0 || temp->n > 127)
@@ -81,8 +81,8 @@ void op_rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *first;
 	int n;
-	UNUSED(line_number);
 
+	UNUSED(line_number);
 	if (*stack)
 	{
 		first = pop(stack);
@@ -91,3 +91,24 @@ void op_rotl(stack_t **stack, unsigned int line_number)
 		push_end(stack, n);
 	}
 }
+
+/**
+ * op_rotr - moves the last item to the front
+ * @stack: pointer to stack
+ * @line_number: line number
+ */
+void op_rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *first;
+	int n;
+
+	UNUSED(line_number);
+	if (*stack)
+	{
+		first = pop_end(stack);
+		n = first->n;
+		free(first);
+		push(stack, n);
+	}
+}
+
