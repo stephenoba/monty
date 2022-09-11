@@ -59,10 +59,11 @@ void op_pop(stack_t **stack, unsigned int line_number)
 	char *err_msg = "L%d: can't pop an empty stack\n";
 
 	ret = pop(stack);
-	if (ret != 0)
+	if (ret == NULL)
 	{
 		raise_operation_error(err_msg, line_number, *stack);
 	}
+	free(ret);
 }
 
 /**

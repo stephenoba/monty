@@ -70,7 +70,7 @@ int pop(stack_t **head)
 	stack_t *current;
 
 	if (!(*head))
-		return (-1);
+		return (NULL);
 
 	current = *head;
 	*head = current->next;
@@ -78,8 +78,7 @@ int pop(stack_t **head)
 	{
 		current->next->prev = NULL;
 	}
-	free(current);
-	return (0);
+	return (current);
 }
 
 /**
