@@ -23,6 +23,7 @@ instruction_t get_instruction(char *opcode)
 		{ "pchar", op_pchar },
 		{ "pstr", op_pstr },
 		{ "rotl", op_rotl },
+		{ "rotr", op_rotr },
 		{ NULL, NULL }
 	};
 	int i;
