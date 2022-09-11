@@ -105,10 +105,13 @@ void op_rotr(stack_t **stack, unsigned int line_number)
 	UNUSED(line_number);
 	if (*stack)
 	{
-		first = pop_end(stack);
-		n = first->n;
-		free(first);
-		push(stack, n);
+		if ((*stack)->next)
+		{
+			first = pop_end(stack);
+			n = first->n;
+			free(first);
+			push(stack, n);
+		}
 	}
 }
 
